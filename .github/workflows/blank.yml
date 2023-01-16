@@ -25,6 +25,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: Set up NodeJS environment
+        uses: actions/setup-node@v2
+        with:
+          # Reads the node version from the .nvmrc file itself 
+          # node-version-file: '.nvmrc'
+          # The node version can be hard-coded 
+          node-version: 18.13.0
+
       # Runs a single command using the runners shell
       - name: install node dependecies
         run: npm install
