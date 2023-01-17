@@ -55,8 +55,7 @@ jobs:
           cd terraform/
           terraform init
           terraform validate
-          terraform plan 
-          terraform destroy -auto-approve
+          terraform destroy -target aws_security_group.alb_security_group -auto-approve
 
     - name: check pwd
       run: pwd
