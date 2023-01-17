@@ -64,9 +64,6 @@ jobs:
         aws-secret-access-key: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
         aws-region: us-east-1
 
-    - name: Terraform directory
-      run: cd terraform
-
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
@@ -78,12 +75,11 @@ jobs:
       run: cd terraform
 
     - name: Terraform Init
-      run: terraform init
-
-    # Checks that all Terraform configuration files adhere to a canonical format
-    - name: Terraform Format
-      run: terraform fmt -check
-
+      run: |
+          cd terraform/
+          terraform init
+          terraform validate
+          
     - name: check pwd
       run: pwd
     # Generates an execution plan for Terraform
