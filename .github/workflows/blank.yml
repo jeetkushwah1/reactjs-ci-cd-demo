@@ -56,7 +56,7 @@ jobs:
           terraform init
           terraform validate
           terraform plan 
-          terraform distroy -auto-approve
+          terraform destroy -auto-approve
 
     - name: check pwd
       run: pwd
